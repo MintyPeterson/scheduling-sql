@@ -10,8 +10,8 @@ A set of T-SQL scripts for event date scheduling.
 ####Schedules table layout
 The schedules table follows a similar format to [msdb.dbo.sysschedules](https://msdn.microsoft.com/en-us/library/ms178644.aspx):
 
-| Column name               | Description                                             |
-|---------------------------|---------------------------------------------------------|
+| Column name                 | Description                                           |
+|-----------------------------|-------------------------------------------------------|
 | `ScheduleID`                | The identification number (and primary key).          |
 | `IsEnabled`                 | A value indicating if the schedule is enabled or not. |
 | `StartDate`                 | The start date.                                       |
@@ -75,3 +75,15 @@ The `FrequencyRelativeInterval` column is a bitfield specifying the weeks of the
 * 16 = Last week
 
 The `FrequencyRecurrenceFactor` specifies the number of months between each occurrence.
+
+###Examples
+
+| Description | `FrequencyType` | `FrequencyInterval` | `FrequencyRelativeInterval` | `FrequencyRecurrenceFactor` |
+|---------------------------------------|----|----|----|---|
+| One-time                              | 1  | 0  | 0  | 0 |
+| Every 14 days                         | 4  | 14 | 0  | 0 |
+| Every Sunday and Monday every 2 weeks | 8  | 3  | 0  | 2 |
+| Every 10th day every 3 months         | 16 | 10 | 0  | 3 |
+| Every last Sunday every 6 months      | 32 | 1  | 16 | 6 |
+
+For more examples, see *Tests.sql*.
