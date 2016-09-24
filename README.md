@@ -71,7 +71,7 @@ The `FrequencyRelativeInterval` column is a bitfield specifying the weeks of the
 * 1 = First week
 * 2 = Second week
 * 4 = Third week
-* 8 = Fourth Week
+* 8 = Fourth week
 * 16 = Last week
 
 The `FrequencyRecurrenceFactor` specifies the number of months between each occurrence.
