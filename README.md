@@ -1,13 +1,13 @@
-##Scheduling SQL
+## Scheduling SQL
 A set of T-SQL scripts for event date scheduling.
 
-###Usage
+### Usage
 1. Create a calendar table using *Calendar.sql*.
 2. Create a schedules table using *Schedules.sql*.
 3. Create an occurrences view using *Occurrences.sql*.
 4. Test that the occurrences view contains expected data using *Tests.sql*.
 
-####Schedules table layout
+#### Schedules table layout
 The schedules table follows a similar format to [msdb.dbo.sysschedules](https://msdn.microsoft.com/en-us/library/ms178644.aspx):
 
 | Column name                 | Description                                           |
@@ -23,7 +23,7 @@ The schedules table follows a similar format to [msdb.dbo.sysschedules](https://
 
 † If the end date is `NULL`, the occurrence view will display data as far as the end of the calendar table.
 
-####Supported frequency types
+#### Supported frequency types
 
 | Name               | Type | 
 |--------------------|------|
@@ -33,13 +33,13 @@ The schedules table follows a similar format to [msdb.dbo.sysschedules](https://
 | Monthly            | 16   | 
 | Monthly (relative) | 32   |
 
-#####One-time
+##### One-time
 The `FrequencyInterval`, `FrequencyRelativeInterval`, and `FrequencyRecurrenceFactor` columns are not used.
 
-#####Daily
+##### Daily
 The `FrequencyInterval` column specifies the number of days between each occurrence. The `FrequencyRelativeInterval` and `FrequencyRecurrenceFactor` columns are not used.
 
-#####Weekly
+##### Weekly
 The `FrequencyInterval` column is a bitfield specifying the days of the week on which the schedule occurs.
 
 * 1 = Sunday
@@ -52,10 +52,10 @@ The `FrequencyInterval` column is a bitfield specifying the days of the week on 
 
 The `FrequencyRelativeInterval` column is not used. The `FrequencyRecurrenceFactor` specifies the number of weeks between each occurrence.
 
-#####Monthly
+##### Monthly
 The `FrequencyInterval` column specifies the day of the month on which the schedule occurs. The `FrequencyRelativeInterval` column is not used. The `FrequencyRecurrenceFactor` specifies the number of months between each occurrence.
 
-#####Monthly (relative)
+##### Monthly (relative)
 The `FrequencyInterval` column is a bitfield specifying the days of the week on which the schedule occurs.
 
 * 1 = Sunday
@@ -76,7 +76,7 @@ The `FrequencyRelativeInterval` column is a bitfield specifying the weeks of the
 
 The `FrequencyRecurrenceFactor` specifies the number of months between each occurrence.
 
-###Examples
+### Examples
 
 | Description | `FrequencyType` | `FrequencyInterval` | `FrequencyRelativeInterval` | `FrequencyRecurrenceFactor` |
 |---------------------------------------|----|----|----|---|
